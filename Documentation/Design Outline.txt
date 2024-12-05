@@ -4,8 +4,10 @@ Results JSON File that is parsed after each race, database for leaderboards. Dis
 
 NEEDS:
 
+
+-MERN STACK
+-track penalties and red flags
 -ADD UNIT TESTS
--VUE JS AND EXPRESS JS
 -DATABASE (for leaderboards)
 -RELATIONAL DATABASE
 -ECOMMERCE (store button for merchandise, stickers)
