@@ -1,0 +1,18 @@
+{
+  "name": "jasper-cup-website",
+  "version": "1.0.0",
+  "description": "This website really cool\r Hello Andy Test",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node backend/server.js"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.1",
+    "mongoose": "^8.8.3"
+  }
+}
