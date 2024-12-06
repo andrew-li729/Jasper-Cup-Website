@@ -31,6 +31,17 @@ STRETCH 1: Friday 12/6
 
 Initialize Node JS Project
 
-Come up with relational database structure
+Come up with mongoDB database structure
+
+COMPLETED!
+--------------------------------------------------------------------------------------------------------------------------------
+STRETCH 2: Friday 12/13
+
+CRUD
+create/read/update/delete records through api
+
+Set up routes for:
+Adding and retrieving race results.
+
 
 --------------------------------------------------------------------------------------------------------------------------------
