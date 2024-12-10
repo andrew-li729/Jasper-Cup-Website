@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose'
 
 // Define the Event schema with embedded racers
 const EventSchema = new mongoose.Schema({
@@ -47,7 +47,13 @@ const EventSchema = new mongoose.Schema({
       },
     },
   ],
+}, 
+{
+  timestamps: true
 });
 
 // Create and export the Event model
-module.exports = mongoose.model('Event', EventSchema);
+
+const Event = mongoose.model('Event',EventSchema);
+
+export default Event
