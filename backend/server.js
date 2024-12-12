@@ -40,6 +40,18 @@ app.post('/api/events', async (req, res) => {
     }
 });
 
+app.delete("/api/events/:id", async (req, res) => {
+    const {id} = req.params;
+    console.log("id:", id);
+
+    try {
+        await Event.findByIdAndDelete(id)
+        res.status(200).json({success:true,message:"product deleted"})
+    } catch (error) {
+        res.status(404).json({success:false,message:"faild"})
+    } 
+})
+
 app.listen(5000, () =>{
     connectDB();
     console.log("Server started at http://localhost:5000");
