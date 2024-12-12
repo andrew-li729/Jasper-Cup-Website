@@ -2,11 +2,6 @@ import mongoose from 'mongoose'
 
 // Define the Event schema with embedded racers
 const EventSchema = new mongoose.Schema({
-  event_id: {
-    type: String,
-    required: true,
-    unique: true,
-  },
   season: {
     type: String,
     required: false, // Optional field
@@ -47,10 +42,8 @@ const EventSchema = new mongoose.Schema({
       },
     },
   ],
-}, 
-{
-  timestamps: true
-});
+}
+);
 
 // Create and export the Event model
 
