@@ -14,7 +14,7 @@ app.use(express.json()); //lets us use json in the req.body
 app.post('/api/events', async (req, res) => {
     const event = req.body; //user sends data through body
 
-    const requiredFields = ["event_id", "event_date", "track", "car_name"];
+    const requiredFields = ["event_date", "track", "car_name"];
 
     var errors = []
 
