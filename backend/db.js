@@ -1,14 +1,14 @@
 import sql from "mssql";
 import {db_user, password, server, db_port, db_name} from './config.js'
 
-//database config
+//configuration for connecting to database
 
 const config = {
-    user: db_user, // better stored in an app setting such as process.env.DB_USER
-    password: password, // better stored in an app setting such as process.env.DB_PASSWORD
-    server: server, // better stored in an app setting such as process.env.DB_SERVER
-    port: db_port, // optional, defaults to 1433, better stored in an app setting such as process.env.DB_PORT
-    database: db_name, // better stored in an app setting such as process.env.DB_NAME
+    user: db_user,
+    password: password,
+    server: server,
+    port: db_port,
+    database: db_name,
     authentication: {
         type: 'default'
     },

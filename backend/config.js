@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
+//these are all variables stored in an external dotenv file for secure connection to sql
 export const port = process.env.PORT;
 export const db_user = process.env.DB_USER;
 export const password = process.env.PASSWORD;
