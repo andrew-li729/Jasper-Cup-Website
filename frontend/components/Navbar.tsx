@@ -77,19 +77,20 @@ const Navbar = () => {
           </li>
           <li>
             <Link href="#about" className="hover:text-yellow-400">
-              About
+              Current Season
             </Link>
           </li>
           <li>
             <Link href="#services" className="hover:text-yellow-400">
-              Services
+              Past Seasons
             </Link>
           </li>
           <li>
             <Link href="#contact" className="hover:text-yellow-400">
-              Contact
+              Shop
             </Link>
           </li>
+
         </ul>
       </div>
     </header>

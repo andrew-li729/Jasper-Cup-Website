@@ -7,7 +7,6 @@ import React, { useState, useRef } from 'react';
 
 
 const leaderboardData1 = [
-  {title:"Race 1"},
   { rank: 1, name: 'Charlie', score: 200 },
   { rank: 2, name: 'David', score: 180 },
   { rank: 3, name: 'Eva', score: 150 },
@@ -17,7 +16,6 @@ const leaderboardData1 = [
 
 // Leaderboard 3: Fastest Times
 const leaderboardData2 = [
-  {title:"Race 2"},
   { rank: 1, name: 'Hannah', score: 5.2 },
   { rank: 2, name: 'Ivy', score: 5.5 },
   { rank: 3, name: 'Jack', score: 5.8 },
@@ -27,7 +25,6 @@ const leaderboardData2 = [
 
 // Leaderboard 4: Highest Levels Achieved
 const leaderboardData3 = [
-  {title:"Race 3"},
   { rank: 1, name: 'Mona', score: 50 },
   { rank: 2, name: 'Nina', score: 48 },
   { rank: 3, name: 'Oscar', score: 45 },
@@ -37,7 +34,6 @@ const leaderboardData3 = [
 
 // Leaderboard 5: Most Challenges Completed
 const leaderboardData4 = [
-  {title:"Race 4"},
   { rank: 1, name: 'Rachel', score: 30 },
   { rank: 2, name: 'Steve', score: 28 },
   { rank: 3, name: 'Tina', score: 25 },
@@ -47,7 +43,6 @@ const leaderboardData4 = [
 
 // Leaderboard 6: Most Valuable Players
 const leaderboardData5 = [
-  {title:"Race 5"},
   { rank: 1, name: 'Wendy', score: 1000 },
   { rank: 2, name: 'Xander', score: 950 },
   { rank: 3, name: 'Yara', score: 900 },
@@ -57,7 +52,6 @@ const leaderboardData5 = [
 
 // Leaderboard 7: Most Improved Players
 const leaderboardData6 = [
-  {title:"Race 6"},
   { rank: 1, name: 'Bob', score: 200 },
   { rank: 2, name: 'Charlie', score: 180 },
   { rank: 3, name: 'David', score: 150 },
@@ -110,6 +104,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Navbar />
+
+      <TwitchChannel channelName="JasperCup"></TwitchChannel>
+
       <div
       className="overflow-x-auto max-w-full "
       ref={scrollContainerRef}
@@ -118,16 +115,19 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp} // to stop dragging if mouse leaves container
     >
+
+      
+
         <div className="flex space-x-8 text-white">
-          <Leaderboard data={leaderboardData1} />
-          <Leaderboard data={leaderboardData2} />
-          <Leaderboard data={leaderboardData3} />
-          <Leaderboard data={leaderboardData4} />
-          <Leaderboard data={leaderboardData5} />
-          <Leaderboard data={leaderboardData6} />
+          <Leaderboard data={leaderboardData1} title="Race 1" />
+          <Leaderboard data={leaderboardData2} title="Race 2"/>
+          <Leaderboard data={leaderboardData3} title="Race 3"/>
+          <Leaderboard data={leaderboardData4} title="Race 4"/>
+          <Leaderboard data={leaderboardData5} title="Race 5"/>
+          <Leaderboard data={leaderboardData6} title="Race 6"/>
         </div>
       </div>
-      <TwitchChannel channelName="JasperCup"></TwitchChannel>
+      
 
       <div>
         <h1>Welcome to My Next.js App</h1>

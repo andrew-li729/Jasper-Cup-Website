@@ -6,14 +6,13 @@ interface LeaderboardEntry {
 
 interface LeaderboardProps {
   data: LeaderboardEntry[];
+  title:string;
 }
 
-const Leaderboard = ({ data }: LeaderboardProps) => {
+const Leaderboard = ({ data,title }: LeaderboardProps) => {
   return (
     <div className="bg-gray-800 bg-opacity-100 p-8 rounded-lg shadow-lg mx-4 my-4 max-w-7xl">
-      {data.map((entry) => (
-            <h1 className="text-2xl font-bold mb-4">{entry.title}</h1>
-          ))}
+      <h1 className="text-2xl font-bold mb-4">{title}</h1>
       <table className="w-full table-auto">
         <thead>
           <tr className="border-b">
