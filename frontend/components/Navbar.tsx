@@ -10,14 +10,10 @@ const Navbar = () => {
     setIsMobileMenuOpen((prevState) => !prevState);
   };
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen((prevState) => !prevState);
-  };
-
 
   return (
-    <header className="bg-gray-800 text-white shadow-md">
-      <nav className="max-w-7xl mx-auto px-4 py-5 flex justify-between items-center">
+    <header className="bg-gray-800 bg-opacity-95 text-white shadow-md">
+      <nav className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center">
           <img src="/jasper.png" alt="Jasper Cup" className="h-10 mr-2" />
           <div className="text-xl font-bold mt-2">Jasper Cup</div>
@@ -32,32 +28,13 @@ const Navbar = () => {
               Home
             </Link>
           </li>
-          {/* Dropdown for About */}
-          <li className="relative group">
             <button className="hover:text-yellow-400 flex items-center ">
-              Season
+              Current Season
             </button>
-            {/* Dropdown Menu */}
-            <div className="absolute left-0 mt-5 w-21 bg-gray-800 text-white shadow-md opacity-0 group-hover:opacity-100 transition-opacity">
-              <ul className="space-y-2 text-left">
-                <li>
-                  <Link href="#seasonoption" className="hover:text-yellow-400">
-                    Season1
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#seasonoption" className="hover:text-yellow-400">
-                    Season2
-                  </Link>
-                </li>
-                <li>
-                  <Link href="seasonoption" className="hover:text-yellow-400">
-                    Season3
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </li>
+
+            <button className="hover:text-yellow-400 flex items-center ">
+              Past Seasons
+            </button>
 
 
 
