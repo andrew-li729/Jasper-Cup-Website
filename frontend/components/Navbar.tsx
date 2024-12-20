@@ -18,10 +18,12 @@ const Navbar = () => {
   return (
     <header className="bg-gray-800 text-white shadow-md">
       <nav className="max-w-7xl mx-auto px-4 py-5 flex justify-between items-center">
-        <div className="text-xl font-bold">Jasper Cup</div>
-        
-        <ul
-          className={`hidden md:flex space-x-6 font-medium ${
+        <div className="flex items-center">
+          <img src="/jasper.png" alt="Jasper Cup" className="h-10 mr-2" />
+          <div className="text-xl font-bold mt-2">Jasper Cup</div>
+        </div>
+        <ul 
+          className={`hidden md:flex space-x-6 font-medium  ${
             isMobileMenuOpen ? "block" : "hidden"
           }`}
         >
@@ -32,25 +34,25 @@ const Navbar = () => {
           </li>
           {/* Dropdown for About */}
           <li className="relative group">
-            <button className="hover:text-yellow-400 flex items-center">
+            <button className="hover:text-yellow-400 flex items-center ">
               Season
             </button>
             {/* Dropdown Menu */}
-            <div className="absolute left-0 mt-5 w-21 bg-gray-700 text-white px-3 py-2 shadow-md opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className="absolute left-0 mt-5 w-21 bg-gray-800 text-white shadow-md opacity-0 group-hover:opacity-100 transition-opacity">
               <ul className="space-y-2 text-left">
                 <li>
                   <Link href="#seasonoption" className="hover:text-yellow-400">
-                    Season 1
+                    Season1
                   </Link>
                 </li>
                 <li>
                   <Link href="#seasonoption" className="hover:text-yellow-400">
-                    Season 2
+                    Season2
                   </Link>
                 </li>
                 <li>
                   <Link href="seasonoption" className="hover:text-yellow-400">
-                    Season 3
+                    Season3
                   </Link>
                 </li>
               </ul>
