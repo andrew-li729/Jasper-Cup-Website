@@ -111,7 +111,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <>
       <Navbar />
       <div
-      className="overflow-x-auto max-w-full overflow-x-hidden"
+      className="overflow-x-auto max-w-full "
       ref={scrollContainerRef}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
