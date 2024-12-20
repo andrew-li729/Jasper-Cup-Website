@@ -12,7 +12,7 @@ const TwitchChannel: React.FC<TwitchChannelProps> = ({
   height = "480px",
 }) => {
   return (
-    <div className="twitch-embed-container flex justify-center items-center my-8">
+    <div className="twitch-embed-container flex justify-center items-center my-4 ">
       <iframe
         src={`https://player.twitch.tv/?channel=${channelName}&parent=localhost`}
         frameBorder="0"

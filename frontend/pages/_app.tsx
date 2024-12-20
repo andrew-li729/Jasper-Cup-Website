@@ -9,10 +9,12 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Navbar />
+
       <div className="flex">
       <Leaderboard/>
       <TwitchChannel channelName="JasperCup"></TwitchChannel>
       </div>
+      
       <div>
         <h1>Welcome to My Next.js App</h1>
         <p>This is a basic HTML boilerplate rendered with the Navbar.</p>
