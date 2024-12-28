@@ -12,7 +12,7 @@ const Navbar = () => {
 
 
   return (
-    <header className="bg-neutral-800 bg-opacity-95 text-white shadow-md">
+    <header className="bg-neutral-800 text-white shadow-md">
       <nav className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center">
           <img src="/jasper.png" alt="Jasper Cup" className="h-10 mr-2" />

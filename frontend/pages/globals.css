@@ -22,7 +22,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: 'Inter', Arial, Helvetica, sans-serif;
-  background-image: url('../public/background.jpg');
+  background-color:#262626;
   background-size: cover; /* Ensures the image covers the entire viewport */
   background-position: center center; /* Centers the image */
   background-repeat:no-repeat;
