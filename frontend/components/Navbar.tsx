@@ -12,7 +12,7 @@ const Navbar = () => {
 
 
   return (
-    <header className="bg-gray-800 bg-opacity-95 text-white shadow-md">
+    <header className="bg-neutral-800 bg-opacity-95 text-white shadow-md">
       <nav className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center">
           <img src="/jasper.png" alt="Jasper Cup" className="h-10 mr-2" />
@@ -24,29 +24,29 @@ const Navbar = () => {
           }`}
         >
           <li>
-            <Link href="/" className="hover:text-yellow-400">
-              Home
+            <Link href="/" className="hover:text-pink-300">
+              Seasons
             </Link>
           </li>
-            <button className="hover:text-yellow-400 flex items-center ">
-              Current Season
+            <button className="hover:text-pink-300 flex items-center ">
+              Results
             </button>
 
-            <button className="hover:text-yellow-400 flex items-center ">
-              Past Seasons
+            <button className="hover:text-pink-300 flex items-center ">
+              Store
             </button>
 
 
 
 
           <li>
-            <Link href="#contact" className="hover:text-yellow-400">
-              Contact
+            <Link href="#contact" className="hover:text-pink-300">
+              Twitch
             </Link>
           </li>
           <li>
-            <Link href="#shop" className="hover:text-yellow-400">
-              Shop
+            <Link href="#shop" className="hover:text-pink-300">
+              About
             </Link>
           </li>
         </ul>

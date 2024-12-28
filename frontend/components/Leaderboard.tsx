@@ -11,9 +11,9 @@ interface LeaderboardProps {
 
 const Leaderboard = ({ data,title }: LeaderboardProps) => {
   return (
-    <div className="bg-gray-800 bg-opacity-100 p-8 rounded-lg shadow-lg mx-4 my-4 max-w-7xl">
+    <div className="bg-opacity-100 p-8 shadow-lg max-w-7xl">
       <h1 className="text-2xl font-bold mb-4">{title}</h1>
-      <table className="w-full table-auto">
+      <table className="bg-white-800  w-full table-auto">
         <thead>
           <tr className="border-b">
             <th className="px-4 py-2 text-left">Rank</th>
@@ -23,7 +23,7 @@ const Leaderboard = ({ data,title }: LeaderboardProps) => {
         </thead>
         <tbody>
           {data.map((entry) => (
-            <tr key={entry.rank} className="border-b">
+            <tr key={entry.rank} className="">
               <td className="px-4 py-2">{entry.rank}</td>
               <td className="px-4 py-2">{entry.name}</td>
               <td className="px-4 py-2">{entry.score}</td>
