@@ -32,20 +32,22 @@ const Navbar = () => {
               Results
             </button>
 
-            <button className="hover:text-pink-300 flex items-center ">
+          <li>
+            <Link href="#store" className="hover:text-pink-300">
               Store
-            </button>
+            </Link>
+          </li>
 
 
 
 
           <li>
-            <Link href="#contact" className="hover:text-pink-300">
+            <Link href="https://www.twitch.tv/JasperCup" className="hover:text-pink-300">
               Twitch
             </Link>
           </li>
           <li>
-            <Link href="#shop" className="hover:text-pink-300">
+            <Link href="#about" className="hover:text-pink-300">
               About
             </Link>
           </li>
@@ -81,12 +83,12 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link href="#services" className="hover:text-yellow-400">
+            <Link href="#pastseasons" className="hover:text-yellow-400">
               Past Seasons
             </Link>
           </li>
           <li>
-            <Link href="#contact" className="hover:text-yellow-400">
+            <Link href="#shop" className="hover:text-yellow-400">
               Shop
             </Link>
           </li>

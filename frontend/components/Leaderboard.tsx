@@ -15,7 +15,7 @@ const Leaderboard = ({ data, title }: LeaderboardProps) => {
       <h1 className="text-2xl mb-4 text-pink-300">{title}</h1>
       <table className="bg-neutral-50 w-full table-auto text-black">
         <thead>
-          <tr>
+          <tr className='border-b'>
             <th className="px-4 py-2 text-left">POS</th>
             <th className="px-4 py-2 text-left">DRIVER</th>
             <th className="px-4 py-2 text-left">PTS</th>

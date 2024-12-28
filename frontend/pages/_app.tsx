@@ -7,11 +7,13 @@ import React, { useState, useRef } from 'react';
 
 
 const raceData1 = [
-  { rank: 1, name: 'Charlie', score: 200 },
-  { rank: 2, name: 'David', score: 180 },
-  { rank: 3, name: 'Eva', score: 150 },
-  { rank: 4, name: 'Frank', score: 130 },
-  { rank: 5, name: 'Grace', score: 120 },
+  { rank: 1, name: 'Andrew', score: 482 },
+  { rank: 2, name: 'Jared', score: 390 },
+  { rank: 3, name: 'Ben', score: 142 },
+  { rank: 4, name: 'Ian', score: 122 },
+  { rank: 5, name: 'Andres', score: 109 },
+  { rank: 6, name: 'Miles', score: 92 },
+  { rank: 7, name: 'Bryan', score: 76 },
 ];
 
 
@@ -36,16 +38,12 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       
 
       <div className="flex justify-center space-x-8 text-white w-full">
-        <Leaderboard data={raceData1} title="CURRENT RESULTS:" />
+        <Leaderboard data={raceData1} title="2024 DRIVER STANDINGS" />
       </div>
       
 
       <div>
         <h1>Welcome to My Next.js App</h1>
-        <p>This is a basic HTML boilerplate rendered with the Navbar.</p>
-        <footer>
-          <p>Footer content goes here.</p>
-        </footer>
       </div>
     </>
   );
