@@ -5,7 +5,6 @@ import TwitchChannel from '@/components/Twitch';
 import "./globals.css";
 import React, { useState, useRef } from 'react';
 
-
 const raceData1 = [
   { rank: 1, name: 'Andrew', score: 482 },
   { rank: 2, name: 'Jared', score: 390 },
@@ -42,10 +41,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <Leaderboard data={raceData1} title="2024 DRIVER STANDINGS" />
       </div>
       
-
-      <div>
-        <h1>Welcome to My Next.js App</h1>
-      </div>
     </>
   );
 };

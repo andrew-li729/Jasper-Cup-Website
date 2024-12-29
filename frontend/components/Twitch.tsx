@@ -14,7 +14,7 @@ const TwitchChannel: React.FC<TwitchChannelProps> = ({
   return (
     <div className="twitch-embed-container flex flex-col justify-center items-center">
       <div className="shadow-xl w-full px-70 py-6 bg-neutral-800 text-2xl text-center min-h-28 text-pink-300">
-        <span className="inline-block w-2 h-2 bg-red-500 rounded-full mr-2 align-middle"></span>
+        <span className="inline-block w-4 h-4 bg-red-600 rounded-full mr-2"></span>
         TUNE IN EVERY THURSDAY TO CATCH THE ACTION LIVE!
         <br></br>
         
