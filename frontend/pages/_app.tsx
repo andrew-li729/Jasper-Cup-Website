@@ -34,10 +34,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <div className="min-h-[68px]"></div>
 
       <TwitchChannel channelName="JasperCup"></TwitchChannel>
+      
 
       
 
-      <div className="flex justify-center space-x-8 text-white w-full">
+      <div className="shadow-lg flex justify-center space-x-8 text-white w-full">
         <Leaderboard data={raceData1} title="2024 DRIVER STANDINGS" />
       </div>
       
