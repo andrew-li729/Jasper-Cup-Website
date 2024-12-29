@@ -16,7 +16,10 @@ const Navbar = () => {
       <nav className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center">
           <img src="/jasper.png" alt="Jasper Cup" className="h-10 mr-2" />
-          <div className="text-xl font-bold mt-2">Jasper Cup</div>
+          <Link href="/" className="text-xl font-bold mt-2 hover:text-pink-300">
+              Jasper Cup
+            </Link>
+
         </div>
         <ul 
           className={`hidden md:flex space-x-6 font-medium  ${
@@ -25,7 +28,7 @@ const Navbar = () => {
         >
           <li>
             <Link href="/" className="hover:text-pink-300">
-              Seasons
+              Home
             </Link>
           </li>
             <button className="hover:text-pink-300 flex items-center ">
@@ -33,22 +36,22 @@ const Navbar = () => {
             </button>
 
           <li>
-            <Link href="#store" className="hover:text-pink-300">
-              Store
-            </Link>
-          </li>
-
-
-
-
-          <li>
             <Link href="https://www.twitch.tv/JasperCup" className="hover:text-pink-300">
               Twitch
             </Link>
           </li>
+
+
+
+
           <li>
-            <Link href="#about" className="hover:text-pink-300">
+            <Link  href="/about"className="hover:text-pink-300">
               About
+            </Link>
+          </li>
+          <li>
+            <Link href="/store" className="hover:text-pink-300">
+              Store
             </Link>
           </li>
         </ul>

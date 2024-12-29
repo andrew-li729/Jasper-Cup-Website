@@ -1,7 +1,6 @@
 import type { AppProps } from 'next/app';
 import Navbar from "../components/Navbar";
-import Leaderboard from "../components/Leaderboard"
-import TwitchChannel from '@/components/Twitch';
+
 import "./globals.css";
 import React, { useState, useRef } from 'react';
 
@@ -10,15 +9,7 @@ import { Lexend } from 'next/font/google'
 // If loading a variable font, you don't need to specify the font weight
 const lexend = Lexend({ subsets: ['latin'] })
 
-const raceData1 = [
-  { rank: 1, name: 'Andrew', score: 482 },
-  { rank: 2, name: 'Jared', score: 390 },
-  { rank: 3, name: 'Ben', score: 142 },
-  { rank: 4, name: 'Ian', score: 122 },
-  { rank: 5, name: 'Andres', score: 109 },
-  { rank: 6, name: 'Miles', score: 92 },
-  { rank: 7, name: 'Bryan', score: 76 },
-];
+
 
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
@@ -39,16 +30,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
       <div className="min-h-[68px]"></div>
 
-      <TwitchChannel channelName="JasperCup"></TwitchChannel>
       
-
       
-
-      <div className="shadow-lg flex justify-center space-x-8 text-white w-full">
-        <Leaderboard data={raceData1} title="2024 DRIVER STANDINGS" />
-      </div>
-      
-
+      <Component {...pageProps} />
     </div>
     </>
   );

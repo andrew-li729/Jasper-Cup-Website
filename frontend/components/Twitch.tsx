@@ -13,7 +13,7 @@ const TwitchChannel: React.FC<TwitchChannelProps> = ({
 }) => {
   return (
     <div className="twitch-embed-container flex flex-col justify-center items-center">
-      <div className="shadow-xl w-full px-70 py-6 bg-neutral-800 text-2xl text-center min-h-28 text-pink-300">
+      <div className="px-70 py-6 bg-neutral-800 text-2xl text-center min-h-28 text-pink-300 mx-auto">
         <span className="inline-block w-4 h-4 bg-red-600 rounded-full mr-2"></span>
         TUNE IN EVERY THURSDAY TO CATCH THE ACTION LIVE!
         <br></br>
@@ -27,6 +27,8 @@ const TwitchChannel: React.FC<TwitchChannelProps> = ({
         WATCH BELOW OR CLICK HERE!
       </a>
       </div>
+
+      <div className="max-w-7xl w-full mx-auto px-7">
       <iframe
         src={`https://player.twitch.tv/?channel=${channelName}&parent=localhost`}
         frameBorder="0"
@@ -36,6 +38,7 @@ const TwitchChannel: React.FC<TwitchChannelProps> = ({
         height={height}
         className="sm:block hidden shadow-lg"
       ></iframe>
+      </div>
     </div>
   );
 };
