@@ -5,6 +5,11 @@ import TwitchChannel from '@/components/Twitch';
 import "./globals.css";
 import React, { useState, useRef } from 'react';
 
+import { Lexend } from 'next/font/google'
+ 
+// If loading a variable font, you don't need to specify the font weight
+const lexend = Lexend({ subsets: ['latin'] })
+
 const raceData1 = [
   { rank: 1, name: 'Andrew', score: 482 },
   { rank: 2, name: 'Jared', score: 390 },
@@ -26,6 +31,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   //HTML displayed below
   return (
     <>
+    <div className={lexend.className}>
+
       <div className="navbar fixed top-0 left-0 w-full bg-neutral-800 text-white shadow-lg z-50">
         <Navbar />
       </div>
@@ -41,6 +48,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <Leaderboard data={raceData1} title="2024 DRIVER STANDINGS" />
       </div>
       
+
+    </div>
     </>
   );
 };
