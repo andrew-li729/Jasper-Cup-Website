@@ -40,12 +40,9 @@ const IndexPage = () => {
 
     <TwitchChannel channelName="JasperCup"></TwitchChannel>
       
-
-      
-
-      <div className="shadow-lg flex justify-center space-x-8 text-white w-full">
-        <Leaderboard data={raceData} title="2024 DRIVER STANDINGS" />
-      </div>
+    <div className="shadow-lg flex justify-center space-x-8 text-white w-full">
+      <Leaderboard data={raceData} title="LATEST DRIVER STANDINGS" />
+    </div>
 
     </>
   );

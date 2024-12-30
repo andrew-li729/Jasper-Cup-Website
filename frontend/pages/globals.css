@@ -4,17 +4,6 @@
 
 
 /* globals.css */
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
   color: var(--foreground);
@@ -28,3 +17,15 @@ body {
   margin: 0; /* Removes default margin */
 }
 
+.fc .fc-toolbar { 
+  @apply bg-gray-100 p-4 rounded-lg;
+}
+.fc .fc-day { 
+  @apply bg-white border border-gray-300;
+}
+.fc .fc-day-today { 
+  @apply bg-blue-50;
+}
+.fc .fc-event {
+  @apply bg-blue-500 text-white font-medium rounded-lg px-2 py-1;
+}

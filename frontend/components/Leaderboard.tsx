@@ -12,7 +12,7 @@ interface LeaderboardProps {
 const Leaderboard = ({ data, title }: LeaderboardProps) => {
   return (
     <div className="w-full bg-opacity-100 p-7 max-w-7xl">
-      <h1 className="text-2xl mb-4 text-pink-300">{title}</h1>
+      <h1 className="text-4xl mb-4 text-pink-300">{title}</h1>
       <table className="bg-neutral-50 w-full table-auto text-black">
         <thead>
           <tr className='border-b'>

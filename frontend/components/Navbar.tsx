@@ -31,14 +31,21 @@ const Navbar = () => {
               Home
             </Link>
           </li>
-            <button className="hover:text-pink-300 flex items-center ">
+            <Link href="/results" className="hover:text-pink-300">
               Results
-            </button>
-
-          <li>
-            <Link href="https://www.twitch.tv/JasperCup" className="hover:text-pink-300">
-              Twitch
             </Link>
+
+          
+          <li>
+          <Link
+            href="https://www.twitch.tv/JasperCup"
+            className="hover:text-pink-300"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Twitch
+          </Link>
+
           </li>
 
 
@@ -72,29 +79,41 @@ const Navbar = () => {
       <div
         className={`md:hidden ${
           isMobileMenuOpen ? "block" : "hidden"
-        } bg-gray-700 text-white py-4`}
+        } bg-neutral-800 text-white py-4`}
       >
         <ul className="space-y-4 text-center">
           <li>
-            <Link href="/" className="hover:text-yellow-400">
+            <Link href="/" className="hover:text-pink-300">
               Home
             </Link>
           </li>
           <li>
-            <Link href="#about" className="hover:text-yellow-400">
-              Current Season
+            <Link href="/results" className="hover:text-pink-300">
+              Results
             </Link>
           </li>
           <li>
-            <Link href="#pastseasons" className="hover:text-yellow-400">
-              Past Seasons
+            <Link
+              href="https://www.twitch.tv/JasperCup"
+              className="hover:text-pink-300"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Twitch
             </Link>
           </li>
           <li>
-            <Link href="#shop" className="hover:text-yellow-400">
-              Shop
+            <Link href="/about" className="hover:text-pink-300">
+              About
             </Link>
           </li>
+
+          <li>
+            <Link href="/store" className="hover:text-pink-300">
+              Store
+            </Link>
+          </li>
+
 
         </ul>
       </div>
