@@ -2,6 +2,7 @@ import poolPromise from '../config/db.js';
 
 import sql from 'mssql'; // Import sql from mssql
 
+//get all drivers
 export const getDrivers = async () => {
   try {
     const pool = await poolPromise;
@@ -11,6 +12,18 @@ export const getDrivers = async () => {
     throw new Error(`Error fetching drivers: ${err.message}`);
   }
 };
+
+//get driver by id
+export const getDriverByID = async () => {
+  try {
+    const pool = await poolPromise;
+    const result = await pool.request().query('SELECT * FROM drivers where DriverGUID = ?');
+    return result.recordset;
+  } catch (err) {
+    throw new Error(`Error fetching driver: ${err.message}`);
+  }
+};
+
 
 export const addDriver = async (driver) => {
   const { DriverGuid, Name, Team, Nation } = driver;
