@@ -1,7 +1,7 @@
 import fs from 'fs/promises'; // Import fs.promises module for async file handling
-import poolPromise from '../config/db.js';
+import poolPromise from './config/db.js';
 import sql from 'mssql'; // Import sql from mssql
-import { addDriver } from '../models/driverModel.js'; // Assuming the above code is in driverModel.js
+import { addDriver } from './models/driverModel.js'; // Assuming the above code is in driverModel.js
 
 const processRaceFile = async (filePath) => {
   try {
@@ -37,4 +37,4 @@ const processRaceFile = async (filePath) => {
 };
 
 // Call the function with the path to the race file
-processRaceFile('../test.json');
+processRaceFile('test.json');
