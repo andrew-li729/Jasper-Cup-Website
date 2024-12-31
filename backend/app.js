@@ -1,8 +1,8 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import sql from 'mssql';
-import poolPromise from './db.js';
-import { port } from './config.js';
+import poolPromise from './config/db.js';
+import { port } from './config/config.js';
 const app = express();
 import driverRoutes from './routes/driverRoutes.js';
 
