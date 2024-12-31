@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* globals.css */
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Futura, Arial, Helvetica, sans-serif;
+  background-color:#262626;
+  background-size: cover; /* Ensures the image covers the entire viewport */
+  background-position: center center; /* Centers the image */
+  background-repeat:no-repeat;
+  min-height: 100vh;
+  margin: 0; /* Removes default margin */
+}
+
+.fc .fc-toolbar { 
+  @apply bg-gray-100 p-4 rounded-lg;
+}
+.fc .fc-day { 
+  @apply bg-white border border-gray-300;
+}
+.fc .fc-day-today { 
+  @apply bg-blue-50;
+}
+.fc .fc-event {
+  @apply bg-blue-500 text-white font-medium rounded-lg px-2 py-1;
+}
