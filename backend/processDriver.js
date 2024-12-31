@@ -1,8 +1,10 @@
-import fs from 'fs/promises'; // Import fs.promises module for async file handling
+import fs from 'fs/promises'; // Import fs.promises for async file handling
+import path from 'path'; // Import path module to work with file paths
 import poolPromise from './config/db.js';
 import sql from 'mssql'; // Import sql from mssql
 import { addDriver } from './models/driverModel.js'; // Assuming the above code is in driverModel.js
 
+// Function to process a single race file
 const processRaceFile = async (filePath) => {
   try {
     // Read and parse the race file
@@ -23,7 +25,7 @@ const processRaceFile = async (filePath) => {
       const driverData = {
         DriverGuid: driver.DriverGuid,
         Name: driver.DriverName,
-        Team: driver.CarModel,  // Assuming the car model is the team (you can modify this as needed)
+        Team: null,
         Nation: null,  // If you have a nation property, you can add it here
       };
 
@@ -36,5 +38,32 @@ const processRaceFile = async (filePath) => {
   }
 };
 
-// Call the function with the path to the race file
-processRaceFile('test.json');
+// Function to process all JSON files in the racefiles folder
+const processAllRaceFiles = async (directoryPath) => {
+  try {
+    // Read the directory to get all files
+    const files = await fs.readdir(directoryPath);
+
+    // Loop through each file in the directory
+    for (const file of files) {
+      const filePath = path.join(directoryPath, file); // Create full file path
+
+      // Ensure only JSON files are processed
+      if (path.extname(file) === '.json') {
+        console.log(`Processing file: ${file}`);
+        await processRaceFile(filePath); // Call processRaceFile for each JSON file
+      } else {
+        console.warn(`Skipping non-JSON file: ${file}`);
+      }
+    }
+  } catch (err) {
+    console.error(`Error reading directory ${directoryPath}: ${err.message}`);
+  }
+};
+
+// Call the function with the path to the racefiles folder
+
+
+//processAllRaceFiles('./racefiles');
+
+//processRaceFile('./racefiles/test.json')

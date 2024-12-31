@@ -6,15 +6,18 @@ import { port } from './config/config.js';
 const app = express();
 import driverRoutes from './routes/driverRoutes.js';
 
-app.use('/api', driverRoutes);
+
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
 
 app.get('/', (req, res) => {
   res.send('Welcome to the Racing API!');
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+app.use('/api', driverRoutes);
+//imports /drivers POST and GET
 
 app.get('/api/data', async (req, res) => {
   try {

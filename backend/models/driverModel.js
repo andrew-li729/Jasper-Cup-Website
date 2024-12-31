@@ -1,5 +1,4 @@
 import poolPromise from '../config/db.js';
-
 import sql from 'mssql'; // Import sql from mssql
 
 //get all drivers
@@ -24,9 +23,14 @@ export const getDriverByID = async () => {
   }
 };
 
-
+// Add or update a driver
 export const addDriver = async (driver) => {
-  const { DriverGuid, Name, Team, Nation } = driver;
+  const { DriverGuid, Name } = driver; // Removed Team and Nation
+
+  if (!DriverGuid) {
+    throw new Error('DriverGuid is required');
+  }
+
   try {
     const pool = await poolPromise;
 
@@ -34,17 +38,15 @@ export const addDriver = async (driver) => {
     await pool.request()
       .input('DriverGuid', sql.VarChar, DriverGuid)
       .input('Name', sql.VarChar, Name)
-      .input('Team', sql.VarChar, Team)
-      .input('Nation', sql.VarChar, Nation)
       .query(`
         MERGE INTO Drivers AS target
         USING (SELECT @DriverGuid AS DriverGuid) AS source
         ON target.DriverGuid = source.DriverGuid
         WHEN MATCHED THEN
-          UPDATE SET Name = @Name, Team = @Team, Nation = @Nation
+          UPDATE SET Name = @Name
         WHEN NOT MATCHED BY TARGET THEN
-          INSERT (Name, DriverGuid, Team, Nation)
-          VALUES (@Name, @DriverGuid, @Team, @Nation);
+          INSERT (Name, DriverGuid)
+          VALUES (@Name, @DriverGuid);
       `);
 
     return { message: 'Driver added or updated successfully' };
@@ -53,5 +55,4 @@ export const addDriver = async (driver) => {
   }
 };
 
-
-export default addDriver
+export default addDriver;
