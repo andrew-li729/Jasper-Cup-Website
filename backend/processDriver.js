@@ -21,12 +21,20 @@ const processRaceFile = async (filePath) => {
 
     // Iterate over each driver in the Result array
     for (const driver of drivers) {
+      // Check if DriverGuid or DriverName is null or missing
+      if (!driver.DriverGuid || !driver.DriverName) {
+        console.warn(
+          `Skipping driver due to missing data. DriverGuid: ${driver.DriverGuid}, DriverName: ${driver.DriverName}`
+        );
+        continue;
+      }
+
       // Prepare the driver object
       const driverData = {
         DriverGuid: driver.DriverGuid,
         Name: driver.DriverName,
         Team: null,
-        Nation: null,  // If you have a nation property, you can add it here
+        Nation: null, // If you have a nation property, you can add it here
       };
 
       // Add each driver to the database
@@ -39,7 +47,4 @@ const processRaceFile = async (filePath) => {
 };
 
 // Call the function with the path to the racefiles folder
-
-
-
-processRaceFile('./racefiles/test.json')
+processRaceFile('./racefiles/test.json');
