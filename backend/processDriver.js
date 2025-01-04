@@ -38,32 +38,8 @@ const processRaceFile = async (filePath) => {
   }
 };
 
-// Function to process all JSON files in the racefiles folder
-const processAllRaceFiles = async (directoryPath) => {
-  try {
-    // Read the directory to get all files
-    const files = await fs.readdir(directoryPath);
-
-    // Loop through each file in the directory
-    for (const file of files) {
-      const filePath = path.join(directoryPath, file); // Create full file path
-
-      // Ensure only JSON files are processed
-      if (path.extname(file) === '.json') {
-        console.log(`Processing file: ${file}`);
-        await processRaceFile(filePath); // Call processRaceFile for each JSON file
-      } else {
-        console.warn(`Skipping non-JSON file: ${file}`);
-      }
-    }
-  } catch (err) {
-    console.error(`Error reading directory ${directoryPath}: ${err.message}`);
-  }
-};
-
 // Call the function with the path to the racefiles folder
 
 
-//processAllRaceFiles('./racefiles');
 
-//processRaceFile('./racefiles/test.json')
+processRaceFile('./racefiles/test.json')
