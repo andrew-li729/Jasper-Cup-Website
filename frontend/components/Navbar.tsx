@@ -12,11 +12,11 @@ const Navbar = () => {
 
 
   return (
-    <header className="bg-neutral-800 text-white shadow-md">
+    <header className="bg-darkgray text-white shadow-md">
       <nav className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center">
           <img src="/jasper.png" alt="Jasper Cup" className="h-10 mr-2" />
-          <Link href="/" className="text-xl font-bold mt-2 hover:text-pink-300">
+          <Link href="/" className="text-xl font-bold mt-2 hover:text-lightpink">
               Jasper Cup
             </Link>
 
