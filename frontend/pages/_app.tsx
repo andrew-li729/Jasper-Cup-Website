@@ -1,6 +1,5 @@
 import type { AppProps } from 'next/app';
 import Navbar from "../components/Navbar";
-
 import "./globals.css";
 import React, { useState, useRef } from 'react';
 
