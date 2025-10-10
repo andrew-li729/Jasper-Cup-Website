@@ -66,7 +66,7 @@ const events = jsonData.Events.map(ev => ({
     impactSpeed: ev.ImpactSpeed,
 }));
 
-console.log({ cars, results , laps /*, events */ });
+console.log({ cars, results , laps, events  });
 
 
   }

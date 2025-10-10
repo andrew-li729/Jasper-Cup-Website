@@ -4,7 +4,7 @@ const path = require('path');
 const parseRaceJSON = require('../services/parseRaceJSON'); // make sure parser.js exports a function
 
 // Directory to watch
-const WATCH_DIR = path.join(__dirname, '../../output'); // change 'watched' to your folder
+const WATCH_DIR = path.join(__dirname, './'); // change 'watched' to your folder
 
 // Initialize watcher
 const watcher = chokidar.watch(WATCH_DIR, {
