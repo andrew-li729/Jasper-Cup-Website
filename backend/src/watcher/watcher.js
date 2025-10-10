@@ -1,10 +1,10 @@
 // filewatcher.js
 const chokidar = require('chokidar');
 const path = require('path');
-const parser = require('../parser/parser'); // make sure parser.js exports a function
+const parseRaceJSON = require('../services/parseRaceJSON'); // make sure parser.js exports a function
 
 // Directory to watch
-const WATCH_DIR = path.join(__dirname, '../test'); // change 'watched' to your folder
+const WATCH_DIR = path.join(__dirname, '../../output'); // change 'watched' to your folder
 
 // Initialize watcher
 const watcher = chokidar.watch(WATCH_DIR, {
@@ -16,7 +16,7 @@ const watcher = chokidar.watch(WATCH_DIR, {
 watcher.on('add', (filePath) => {
   console.log(`New file detected: ${filePath}`);
   try {
-    parser(filePath); // send the new file to parser
+    parseRaceJSON(filePath); // send the new file to parser
   } catch (err) {
     console.error(`Error parsing file ${filePath}:`, err);
   }
