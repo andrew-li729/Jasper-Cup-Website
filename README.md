@@ -27,4 +27,19 @@ STRETCH:
 -SOME KIND OF SCHEDULING UI
 
 --------------------------------------------------------------------------------------------------------------------------------
-STRETCH 1: Friday 12/6
+DATABASE DESIGN:
+
+one season -> many race
+many race_driver -> one race
+
+many car -> many drivers
+
+one result -> one race_driver
+
+one lap(s) -> one race-driver
+
+race_driver is combination of driver/car/result/lap info
+
+
+using steam GUID, so varchar(20) unique,
+non unique usernames.
