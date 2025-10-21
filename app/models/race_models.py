@@ -26,6 +26,7 @@ class Result(BaseModel):
 
 class ScoringSystem(BaseModel):
     #scoring_id: PK autoincremented in DB
+    season_id: int
     position: int
     points: float
 
@@ -37,7 +38,6 @@ class Standing(BaseModel):
 class Season(BaseModel):
     #season_id: int autoincremented in DB
     season_name: str
-    scoring_id: int
     
 class Collision(BaseModel):
     #collision_id: PK autoincremented in DB

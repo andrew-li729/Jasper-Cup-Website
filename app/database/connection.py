@@ -3,9 +3,6 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-print(pyodbc.drivers())
-
-
 driver = os.getenv("DB_DRIVER")
 server = os.getenv("DB_SERVER")
 database = os.getenv("DB_NAME")
@@ -17,11 +14,15 @@ DRIVER={{{driver}}};
 SERVER={server};
 DATABASE={database};
 UID={username};
-PWD={password}
+PWD={password};
+TrustServerCertificate=yes;
 """
 
 # Connect
 conn = pyodbc.connect(conn_str)
 cursor = conn.cursor()
-cursor.execute("SELECT 1")
-print(cursor.fetchone())
+
+cursor.execute("SELECT * FROM dbo.drivers")
+rows = cursor.fetchall()
+for row in rows:
+    print(row)
