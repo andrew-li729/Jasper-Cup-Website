@@ -3,11 +3,11 @@ from typing import List, Optional, Literal
 from datetime import datetime
 
 class Race(BaseModel):
-    #race_id is PK autoincremented in DB
-    season_id: int
+    id: Optional[int] = None
+    season_id: Optional[int] = None
     track_name: str
     #trackConfig: str, currently not using
-    type: Literal["race", "qualifier", "practice"]
+    type: str
     date: datetime
     planned_duration: int  # in milliseconds
     car: str
@@ -15,7 +15,7 @@ class Race(BaseModel):
 
 class Result(BaseModel):
     race_id: int #composite PK
-    driver_id: int #composite PK
+    driver_id: Optional[int] = None
     
     position: Optional[int] #None if DNF
     points: float
@@ -25,25 +25,26 @@ class Result(BaseModel):
     country_snapshot: Optional[str]
 
 class ScoringSystem(BaseModel):
-    #scoring_id: PK autoincremented in DB
-    season_id: int
+    id: Optional[int] = None  # Auto-incremented PK
+    season_id: Optional[int] = None  # Foreign key to Season
     position: int
     points: float
 
 class Standing(BaseModel):
-    season_id: int #composite PK
-    driver_id: int #composite PK
+    id: Optional[int] = None  # Auto-incremented PK
+    driver_id: int
+    season_id: Optional[int] = None  # Foreign key to Season
     total_points: float
     
 class Season(BaseModel):
-    #season_id: int autoincremented in DB
+    id: Optional[int] = None
     season_name: str
     
 class Collision(BaseModel):
-    #collision_id: PK autoincremented in DB
+    id: Optional[int] = None
     race_id: int
     driver_id: int
-    type: Literal["car", "environment"]
+    type: str
     other_driver_id: Optional[int]  # None if type is "environment"
     impact_speed: float  # in mph(?)
 

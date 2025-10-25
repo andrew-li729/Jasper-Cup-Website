@@ -1,5 +1,6 @@
 fastapi
 uvicorn[standard]
-pydantic
+sqlmodel
+pyodbc
 python-multipart      # for file uploads
 pytest                # for tests

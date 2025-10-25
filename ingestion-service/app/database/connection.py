@@ -20,9 +20,3 @@ TrustServerCertificate=yes;
 
 # Connect
 conn = pyodbc.connect(conn_str)
-cursor = conn.cursor()
-
-cursor.execute("SELECT * FROM dbo.drivers")
-rows = cursor.fetchall()
-for row in rows:
-    print(row)
