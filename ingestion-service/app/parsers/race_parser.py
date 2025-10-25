@@ -4,7 +4,11 @@ from pprint import pprint
 from collections import Counter
 
 class RaceParser():
-    
+    """_summary_
+
+    Returns:
+        _type_: _description_
+    """
     @staticmethod 
     def parse(data: dict[str, Any]) -> Race:
         #pprint(data)

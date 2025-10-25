@@ -3,7 +3,11 @@ from typing import List, Any
 from pprint import pprint
 
 class CollisionParser():
-    
+    """_summary_
+
+    Returns:
+        _type_: _description_
+    """
     @staticmethod 
     def parse(data: dict[str, Any]) -> List[Collision]:
         collisions = []

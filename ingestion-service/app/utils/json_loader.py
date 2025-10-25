@@ -6,6 +6,11 @@ from typing import Any
 import os
 
 class JSONLoader:
+    """_summary_
+
+    Returns:
+        _type_: _description_
+    """
     @staticmethod
     def load_json(file_path: str) -> Any:
         """
