@@ -10,10 +10,14 @@ class RaceParser():
         _type_: _description_
     """
     @staticmethod 
-    def parse(data: dict[str, Any]) -> Race:
-        #pprint(data)
-        cars = []
+    def parse(data: dict[str, Any], json_date) -> Race:
+        #check if race is valid
+        print(data.get("Type", ""))
         
+        
+        
+        #track most used car
+        cars = []
         for car in data.get("Cars", []):
                 currentmodel = car["Model"]
                 cars.append(currentmodel)
@@ -26,7 +30,8 @@ class RaceParser():
             type = data.get("Type", ""),
             planned_duration = int(data.get("DurationSecs", 0)),
             total_laps=int(data.get("RaceLaps", 0)),\
-            car = most_common_car[0]
+            car = most_common_car[0],
+            date = json_date
         )
         pprint(current_race)
         return

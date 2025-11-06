@@ -17,15 +17,17 @@ from app.services.lap_service import LapService
 from app.services.collision_service import CollisionService
 from app.services.standing_service import StandingService """
 
+#todo, only parse RACE files
 class ImporterService:
-    def __init__(self, conn):
-        self.conn = conn
+    def __init__(self, connection):
+        self.connection = connection
+        
         self.current_race_id: int = None
         self.file_created_date: datetime = None
         
         self.json_loader = JSONLoader()
         self.driver_parser = DriverParser()
-        #self.collision_parser = CollisionParser()
+        self.collision_parser = CollisionParser()
         self.race_parser = RaceParser()
         """ self.result_parser = ResultParser()
         self.lap_parser = LapParser()
@@ -39,9 +41,24 @@ class ImporterService:
         self.lap_service = LapService(conn)
         self.collision_service = CollisionService(conn)
         self.standing_service = StandingService(conn) """
+    
+    def load_and_parse(self, file_path: str):
+        #Load JSON
+        data = self.json_loader.load_json(file_path)
+
+        # Update file creation date each time
+        self.file_created_date = self.json_loader.get_file_date(file_path)
+        print(f"[Importer] Loaded {file_path} — created {self.file_created_date}")
+
+        # Share to parsers as needed
+        self.current_race_id = self.race_parser.parse(data, self.file_created_date)
+        self.driver_parser.parse(data)
+        self.collision_parser.parse(data)
+
+        return data
+        
 
 # Example usage:
-importerService = ImporterService(conn)
-#data = load_json("test.json")
 
-data = (importerService.json_loader.load_json("test.json"))
+importerService = ImporterService(conn)
+importerService.load_and_parse("test.json")
