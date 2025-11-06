@@ -53,7 +53,7 @@ class ImporterService:
         # Share to parsers as needed
         self.current_race_id = self.race_parser.parse(data, self.file_created_date)
         self.driver_parser.parse(data)
-        self.collision_parser.parse(data)
+        #self.collision_parser.parse(data)
 
         return data
         
