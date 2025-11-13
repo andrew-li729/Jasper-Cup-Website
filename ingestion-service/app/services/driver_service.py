@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, create_engine
+from sqlalchemy import Column, Integer, String, BigInteger, UniqueConstraint
 from sqlalchemy.orm import declarative_base, Session
 from app.models.pydantic_models import Driver, Race
 from sqlalchemy import Column, Integer, String, ForeignKey
@@ -14,10 +14,15 @@ class RaceORM(Base):
 
 class DriverORM(Base):
     __tablename__ = "drivers"
-    id = Column(Integer, primary_key=True,autoincrement=False)
+    id = Column(BigInteger, primary_key=True,autoincrement=False)
     driver_name = Column(String, nullable=False)
     last_race_id = Column(Integer, ForeignKey("races.race_id"), nullable=True)
 
+    __table_args__ = (
+        UniqueConstraint('id', name='uq_driver_id'),
+        UniqueConstraint('driver_name', name='uq_driver_name'),
+    )
+    
 class DriverService:
     def __init__(self, engine):
         self.engine = engine  # SQLAlchemy engine
