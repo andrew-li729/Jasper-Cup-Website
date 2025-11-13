@@ -1,6 +1,8 @@
-import pyodbc
 import os
 from dotenv import load_dotenv
+from sqlalchemy import create_engine
+import urllib
+
 load_dotenv()
 
 driver = os.getenv("DB_DRIVER")
@@ -18,5 +20,10 @@ PWD={password};
 TrustServerCertificate=yes;
 """
 
-# Connect
-conn = pyodbc.connect(conn_str)
+params = urllib.parse.quote_plus(conn_str)
+
+conn_str = f"mssql+pyodbc:///?odbc_connect={params}"
+
+print(conn_str)
+
+engine = create_engine(conn_str)

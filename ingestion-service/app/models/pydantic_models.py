@@ -49,7 +49,7 @@ class Collision(BaseModel):
     impact_speed: float  # in mph(?)
 
 class Driver(BaseModel):
-    driver_id: int #taken from json
+    id: int #taken from json
     driver_name: str
     last_race_id: Optional[int]
         

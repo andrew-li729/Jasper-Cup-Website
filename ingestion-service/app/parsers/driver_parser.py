@@ -2,7 +2,11 @@ from app.models.pydantic_models import Driver
 from typing import List, Any
 
 class DriverParser():
-    
+    """_summary_
+
+    Returns:
+        _type_: _description_
+    """
     @staticmethod 
     def parse(data: dict[str, Any]) -> List[Driver]:
         drivers = []
@@ -11,7 +15,7 @@ class DriverParser():
                 continue
             
             current_driver = Driver(
-                driver_id = int(result["DriverGuid"]),
+                id = int(result["DriverGuid"]),
                 driver_name = result["DriverName"],
                 last_race_id= None  # Placeholder, to be updated later if needed
             )

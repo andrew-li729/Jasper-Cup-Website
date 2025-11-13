@@ -33,5 +33,6 @@ class RaceParser():
             car = most_common_car[0],
             date = json_date
         )
+        
         pprint(current_race)
         return
