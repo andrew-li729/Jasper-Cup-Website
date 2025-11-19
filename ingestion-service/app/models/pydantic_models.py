@@ -19,8 +19,8 @@ class Result(BaseModel):
     
     position: Optional[int] #None if DNF
     points: float
-    total_race_time: Optional[int]  # in milliseconds, None if DNF
-    best_lap_time: Optional[int]  # in milliseconds, None if DNF
+    total_race_time_ms: Optional[int]  # in milliseconds, None if DNF
+    best_lap_time_ms: Optional[int]  # in milliseconds, None if DNF
     driver_name_snapshot: Optional[str]
     country_snapshot: Optional[str]
 

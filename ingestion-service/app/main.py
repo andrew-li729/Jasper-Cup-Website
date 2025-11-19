@@ -7,19 +7,20 @@ from datetime import datetime
 from app.parsers.race_parser import RaceParser
 from app.services.driver_service import DriverService
 from app.services.race_service import RaceService
+from app.services.result_service import ResultService
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
 directory = os.getenv("RACE_OUTPUT_DIRECTORY")
 
-"""from app.parsers.result_parser import ResultParser
-from app.parsers.lap_parser import LapParser
+from app.parsers.result_parser import ResultParser
+"""from app.parsers.lap_parser import LapParser
 from app.parsers.collision_parser import CollisionParser
 
 
 from app.services.race_service import RaceService
-from app.services.result_service import ResultService
+
 from app.services.lap_service import LapService
 from app.services.collision_service import CollisionService
 from app.services.standing_service import StandingService """
@@ -34,16 +35,16 @@ class ImporterService:
         self.driver_parser = DriverParser()
         self.collision_parser = CollisionParser()
         self.race_parser = RaceParser()
-        """ self.result_parser = ResultParser()
-        self.lap_parser = LapParser()
+        self.result_parser = ResultParser()
+        """self.lap_parser = LapParser()
         """
         self.collision_parser = CollisionParser()
         
         # Initialize services
         self.driver_service = DriverService(self.engine)
         self.race_service = RaceService(self.engine)
-        """self.result_service = ResultService(conn)
-        self.lap_service = LapService(conn)
+        self.result_service = ResultService(engine)
+        """self.lap_service = LapService(conn)
         self.collision_service = CollisionService(conn)
         self.standing_service = StandingService(conn) """
     
@@ -66,6 +67,12 @@ class ImporterService:
         race = self.race_parser.parse(data,file_created_date)
         race_id = self.race_service.insert(race)
         
+        results = self.result_parser.parse(data,race_id)
+        
+        for result in results:
+            #pprint(result)
+            self.result_service.insert(result)
+            
         
         return data
         
