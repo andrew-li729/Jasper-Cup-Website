@@ -6,7 +6,7 @@ from app.database.connection import engine
 from datetime import datetime
 from app.parsers.race_parser import RaceParser
 from app.services.driver_service import DriverService
-from sqlalchemy import create_engine
+from app.services.race_service import RaceService
 
 """from app.parsers.result_parser import ResultParser
 from app.parsers.lap_parser import LapParser
@@ -19,7 +19,6 @@ from app.services.lap_service import LapService
 from app.services.collision_service import CollisionService
 from app.services.standing_service import StandingService """
 
-#todo, only parse RACE files
 class ImporterService:
     def __init__(self,engine):
         self.engine = engine
@@ -37,29 +36,30 @@ class ImporterService:
         
         # Initialize services
         self.driver_service = DriverService(self.engine)
-        """ self.race_service = RaceService(conn)
-        self.result_service = ResultService(conn)
+        self.race_service = RaceService(self.engine)
+        """self.result_service = ResultService(conn)
         self.lap_service = LapService(conn)
         self.collision_service = CollisionService(conn)
         self.standing_service = StandingService(conn) """
     
     def parse_and_insert(self, file_path: str):
-        data = self.json_loader.load_json(file_path)
-
-        #File creation date
-        self.file_created_date = self.json_loader.get_file_date(file_path)
-        print(f"[Importer] Loaded {file_path} — created {self.file_created_date}")
-
-        #Parser flow
-        self.current_race_id = self.race_parser.parse(data, self.file_created_date)
-        drivers = self.driver_parser.parse(data)
-        pprint(drivers)
         
+        data = self.json_loader.load_json(file_path)
+        
+        self.file_created_date = self.json_loader.get_file_date(file_path)
+
+        
+        
+        self.current_race_id = self.race_parser.parse(data, self.file_created_date)
+        
+        
+        
+        drivers = self.driver_parser.parse(data)
         for driver in drivers:
             self.driver_service.insert(driver)
-            
-        #self.driver_service.insert(drivers)
-
+        
+        race = self.race_parser.parse(data,self.file_created_date)
+        self.race_service.insert(race)
 
 
         return data

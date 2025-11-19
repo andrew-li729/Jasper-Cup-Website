@@ -7,8 +7,8 @@ class Race(BaseModel):
     season_id: Optional[int] = None
     track_name: str
     #trackConfig: str, currently not using
-    type: str
-    date: datetime
+    race_type: str
+    race_date: datetime
     planned_duration: int  # in milliseconds
     car: str
     total_laps: Optional[int]

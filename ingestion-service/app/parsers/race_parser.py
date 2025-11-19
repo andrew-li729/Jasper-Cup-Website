@@ -2,6 +2,12 @@ from app.models.pydantic_models import Race
 from typing import List, Any
 from pprint import pprint
 from collections import Counter
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+currentseason = os.getenv("CURRENT_SEASON")
 
 class RaceParser():
     """_summary_
@@ -25,14 +31,16 @@ class RaceParser():
         most_common_car = car_counts.most_common(1)[0]
         
         current_race = Race(
+            season_id = currentseason,
             track_name=data.get("TrackName", ""),
             trackConfig=data.get("TrackConfig", ""),
-            type = data.get("Type", ""),
+            race_type = data.get("Type", ""),
             planned_duration = int(data.get("DurationSecs", 0)),
             total_laps=int(data.get("RaceLaps", 0)),\
             car = most_common_car[0],
-            date = json_date
+            race_date = json_date
+            
         )
         
         pprint(current_race)
-        return
+        return current_race
