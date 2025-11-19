@@ -1,32 +1,8 @@
-from sqlalchemy import Column, Integer, String, DateTime
-from sqlalchemy.orm import declarative_base, Session
+from app.models.pydantic_models import Race
+from app.models.sqlalchemy_models import RaceORM
 from sqlalchemy.exc import IntegrityError
-from app.models.pydantic_models import Driver, Race
-from sqlalchemy import Column, Integer, String, UniqueConstraint
-from sqlalchemy.orm import declarative_base
-import datetime
+from sqlalchemy.orm import Session
 
-def round_to_ms(dt: datetime.datetime):
-    return dt.replace(microsecond=(dt.microsecond // 1000) * 1000)
-
-Base = declarative_base()
-
-class RaceORM(Base):
-    __tablename__ = "races"
-
-    id = Column("id", Integer, primary_key=True, autoincrement=True)
-    season_id = Column("season_id", Integer, nullable=False, default=0)
-    track_name = Column("track_name", String, nullable=False)
-    race_type = Column("race_type", String, nullable=False)       # Python: race_type, DB: type
-    race_date = Column("race_date", DateTime, nullable=False)     # Python: race_date, DB: date
-    planned_duration = Column("planned_duration", Integer, nullable=False, default=0)
-    car = Column("car", String, nullable=False)
-    total_laps = Column("total_laps", Integer, nullable=False, default=0)
-
-    __table_args__ = (
-        UniqueConstraint("race_date", "track_name", name="uq_race_date_track"),
-    )
-    
 class RaceService:
     def __init__(self, engine):
         self.engine = engine  # SQLAlchemy engine

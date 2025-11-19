@@ -1,28 +1,7 @@
-from sqlalchemy import Column, Integer, String, BigInteger, UniqueConstraint
-from sqlalchemy.orm import declarative_base, Session
+from app.models.pydantic_models import Driver
+from app.models.sqlalchemy_models import DriverORM
 from sqlalchemy.exc import IntegrityError
-from app.models.pydantic_models import Driver, Race
-from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import declarative_base
-
-Base = declarative_base()
-
-class RaceORM(Base):
-    __tablename__ = "races"
-    race_id = Column(Integer, primary_key=True)
-    race_name = Column(String, nullable=False)
-
-
-class DriverORM(Base):
-    __tablename__ = "drivers"
-    id = Column(BigInteger, primary_key=True,autoincrement=False)
-    driver_name = Column(String, nullable=False)
-    last_race_id = Column(Integer, ForeignKey("races.race_id"), nullable=True)
-
-    __table_args__ = (
-        UniqueConstraint('id', name='uq_driver_id'),
-        UniqueConstraint('driver_name', name='uq_driver_name'),
-    )
+from sqlalchemy.orm import Session
     
 class DriverService:
     def __init__(self, engine):
