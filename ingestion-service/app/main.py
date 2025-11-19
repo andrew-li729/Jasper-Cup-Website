@@ -3,7 +3,6 @@ from app.parsers.driver_parser import DriverParser
 from app.utils.json_loader import JSONLoader
 from app.parsers.collision_parser import CollisionParser
 from app.database.connection import engine
-from datetime import datetime
 from app.parsers.race_parser import RaceParser
 from app.services.driver_service import DriverService
 from app.services.race_service import RaceService
@@ -70,10 +69,10 @@ class ImporterService:
         results = self.result_parser.parse(data,race_id)
         
         for result in results:
-            #pprint(result)
             self.result_service.insert(result)
             
-        
+        collisions = self.collision_parser.parse(data,race_id)
+        pprint(collisions)
         return data
         
 
