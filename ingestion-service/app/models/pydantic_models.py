@@ -64,4 +64,3 @@ class Lap(BaseModel):
     sector_3_time: int  # in milliseconds
     tire: Literal["soft", "medium", "hard"]
     
-    

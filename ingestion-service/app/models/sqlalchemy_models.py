@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey, UniqueConstraint
 from sqlalchemy.orm import declarative_base
 from sqlalchemy import Column, Integer, String, BigInteger, Float, DateTime
 from sqlalchemy.orm import declarative_base, Session, relationship
-from sqlalchemy.exc import IntegrityError
+
 
 Base = declarative_base()
 class RaceORM(Base):
@@ -68,3 +68,29 @@ class DriverORM(Base):
         UniqueConstraint('id', name='uq_driver_id'),
         UniqueConstraint('driver_name', name='uq_driver_name'),
     )
+
+class CollisionORM(Base):
+    __tablename__ = "collisions"
+
+    # Auto-incremented primary key
+    id = Column(Integer, primary_key=True, autoincrement=True)
+
+    # Foreign keys
+    race_id = Column(Integer, ForeignKey("races.id"), nullable=False)
+    driver_id = Column(BigInteger, ForeignKey("drivers.id"), nullable=False)
+    other_driver_id = Column(BigInteger, ForeignKey("drivers.id"), nullable=True)
+
+    # Collision data
+    type = Column(String(64), nullable=False)        # e.g., "COLLISION_WITH_ENV"
+    impact_speed = Column(Float, nullable=True)      # speed in whatever units you use
+
+    # Optional relationships
+    race = relationship("RaceORM", backref="collisions")
+    driver = relationship("DriverORM", foreign_keys=[driver_id], backref="collisions")
+    other_driver = relationship("DriverORM", foreign_keys=[other_driver_id])
+
+    def __repr__(self):
+        return (
+            f"Collision(id={self.id}, race_id={self.race_id}, driver_id={self.driver_id}, "
+            f"type={self.type!r}, other_driver_id={self.other_driver_id}, impact_speed={self.impact_speed})"
+        )

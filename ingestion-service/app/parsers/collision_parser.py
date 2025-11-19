@@ -13,17 +13,11 @@ class CollisionParser():
         collisions = []
         for event in data.get('Events', []):
             
-            #pprint(event)
-            
-            other_driver_id = event.get("OtherDriverGuid")
-            if other_driver_id in [None, '', ""]:
-                other_driver_id = None
-
             currentcollision = Collision(
                 race_id=raceid,
                 driver_id=int(event["Driver"]["Guid"]),
                 type=event["Type"],
-                other_driver_id=other_driver_id,
+                other_driver_id=event['OtherDriver']['Guid'] or None,
                 impact_speed=float(event["ImpactSpeed"])
             )
             collisions.append(currentcollision)

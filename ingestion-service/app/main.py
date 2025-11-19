@@ -7,6 +7,8 @@ from app.parsers.race_parser import RaceParser
 from app.services.driver_service import DriverService
 from app.services.race_service import RaceService
 from app.services.result_service import ResultService
+from app.services.collision_service import CollisionService
+
 import os
 from dotenv import load_dotenv
 
@@ -15,13 +17,12 @@ directory = os.getenv("RACE_OUTPUT_DIRECTORY")
 
 from app.parsers.result_parser import ResultParser
 """from app.parsers.lap_parser import LapParser
-from app.parsers.collision_parser import CollisionParser
 
 
 from app.services.race_service import RaceService
 
 from app.services.lap_service import LapService
-from app.services.collision_service import CollisionService
+
 from app.services.standing_service import StandingService """
 
 
@@ -43,8 +44,9 @@ class ImporterService:
         self.driver_service = DriverService(self.engine)
         self.race_service = RaceService(self.engine)
         self.result_service = ResultService(engine)
+        self.collision_service = CollisionService(engine)
         """self.lap_service = LapService(conn)
-        self.collision_service = CollisionService(conn)
+        
         self.standing_service = StandingService(conn) """
     
     def parse_and_insert(self, file_path: str):
@@ -72,7 +74,11 @@ class ImporterService:
             self.result_service.insert(result)
             
         collisions = self.collision_parser.parse(data,race_id)
-        pprint(collisions)
+        for collision in collisions:
+            self.collision_service.insert(collision)
+            
+            
+            
         return data
         
 
