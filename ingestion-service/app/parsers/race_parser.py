@@ -4,6 +4,7 @@ from pprint import pprint
 from collections import Counter
 from dotenv import load_dotenv
 import os
+from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -18,7 +19,6 @@ class RaceParser():
     @staticmethod 
     def parse(data: dict[str, Any], json_date) -> Race:
         #check if race is valid
-        print(data.get("Type", ""))
         
         
         
@@ -42,5 +42,4 @@ class RaceParser():
             
         )
         
-        pprint(current_race)
         return current_race

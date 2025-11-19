@@ -7,6 +7,11 @@ from datetime import datetime
 from app.parsers.race_parser import RaceParser
 from app.services.driver_service import DriverService
 from app.services.race_service import RaceService
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+directory = os.getenv("RACE_OUTPUT_DIRECTORY")
 
 """from app.parsers.result_parser import ResultParser
 from app.parsers.lap_parser import LapParser
@@ -19,11 +24,11 @@ from app.services.lap_service import LapService
 from app.services.collision_service import CollisionService
 from app.services.standing_service import StandingService """
 
+
+
 class ImporterService:
     def __init__(self,engine):
         self.engine = engine
-        self.current_race_id: int = None
-        self.file_created_date: datetime = None
         
         self.json_loader = JSONLoader()
         self.driver_parser = DriverParser()
@@ -46,11 +51,11 @@ class ImporterService:
         
         data = self.json_loader.load_json(file_path)
         
-        self.file_created_date = self.json_loader.get_file_date(file_path)
+        file_created_date = self.json_loader.get_file_date(file_path)
 
         
         
-        self.current_race_id = self.race_parser.parse(data, self.file_created_date)
+        self.current_race_id = self.race_parser.parse(data, file_created_date)
         
         
         
@@ -58,15 +63,15 @@ class ImporterService:
         for driver in drivers:
             self.driver_service.insert(driver)
         
-        race = self.race_parser.parse(data,self.file_created_date)
-        self.race_service.insert(race)
-
-
+        race = self.race_parser.parse(data,file_created_date)
+        race_id = self.race_service.insert(race)
+        
+        
         return data
         
 
 # Example usage:
 
 importerService = ImporterService(engine)
-print(type(importerService.engine))
-importerService.parse_and_insert("test.json")
+
+importerService.parse_and_insert(directory)

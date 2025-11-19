@@ -31,6 +31,7 @@ class DriverService:
     def insert(self, driver: Driver):
         """Insert a single Driver Pydantic object into the DB, skip duplicates."""
         db_driver_data = driver.model_dump()  # Convert Pydantic → dict
+        
         with Session(self.engine) as session:
             # Check if driver with same ID already exists
             existing = session.get(DriverORM, db_driver_data['id'])

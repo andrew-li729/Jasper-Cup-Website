@@ -47,8 +47,8 @@ class RaceService:
             ).first()
             
             if existing:
-                print(f"Race with date {db_race_data['race_date']} already exists. Skipping insert.")
-                return  # Skip duplicate
+                print(f"Race at {db_race_data['race_date']} already exists. Skipping insert.")
+                return existing.id
 
             # If not exists, insert
             
@@ -59,7 +59,9 @@ class RaceService:
                 session.commit()
                 print(f"Inserted race at {db_race_data['race_date']} successfully.")
                 print(f"Assigned race_id: {db_race.id}")  # <-- now you have the DB-generated PK
+                return db_race.id
             except IntegrityError as e:
                 session.rollback()
                 print(f"Failed to insert {db_race_data['race_date']} due to DB constraint.")
                 print(e.orig)  # SQL Server message shows PK or unique constraint name
+                
