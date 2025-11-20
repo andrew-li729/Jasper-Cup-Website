@@ -56,9 +56,10 @@ class Driver(BaseModel):
 class Lap(BaseModel):
     race_id: int #composite PK
     driver_id: int #composite PK
-    lap_number: int #composite PK
+    time_stamp: int #composite pk
     
     lap_time: int  # in milliseconds
+    
     sector_1_time: int  # in milliseconds
     sector_2_time: int  # in milliseconds
     sector_3_time: int  # in milliseconds

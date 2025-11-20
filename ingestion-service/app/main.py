@@ -16,10 +16,10 @@ load_dotenv()
 directory = os.getenv("RACE_OUTPUT_DIRECTORY")
 
 from app.parsers.result_parser import ResultParser
-"""from app.parsers.lap_parser import LapParser
+from app.parsers.lap_parser import LapParser
 
 
-from app.services.race_service import RaceService
+"""from app.services.race_service import RaceService
 
 from app.services.lap_service import LapService
 
@@ -36,8 +36,7 @@ class ImporterService:
         self.collision_parser = CollisionParser()
         self.race_parser = RaceParser()
         self.result_parser = ResultParser()
-        """self.lap_parser = LapParser()
-        """
+        self.lap_parser = LapParser()
         self.collision_parser = CollisionParser()
         
         # Initialize services
@@ -77,8 +76,10 @@ class ImporterService:
         for collision in collisions:
             self.collision_service.insert(collision)
             
-            
-            
+        laps = self.lap_parser.parse(data,race_id)
+        
+        for lap in laps:
+            pprint(lap)
         return data
         
 
