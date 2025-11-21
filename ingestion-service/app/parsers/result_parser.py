@@ -19,7 +19,7 @@ class ResultParser():
         _type_: _description_
     """
     @staticmethod 
-    def parse(data: dict[str, Any], raceid) -> Result:
+    def parse(data: dict[str, Any], raceid:int) -> Result:
         results = []
         #pprint(data['Result'])
         for result in data['Result']:

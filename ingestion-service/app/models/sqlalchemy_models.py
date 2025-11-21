@@ -7,6 +7,9 @@ from sqlalchemy.orm import declarative_base, Session, relationship
 Base = declarative_base()
 class RaceORM(Base):
     __tablename__ = "races"
+    __table_args__ = (
+        UniqueConstraint("race_date", "track_name", name="uq_race_date_track"),
+    )
 
     id = Column("id", Integer, primary_key=True, autoincrement=True)
     season_id = Column("season_id", Integer, nullable=False, default=0)
@@ -19,11 +22,6 @@ class RaceORM(Base):
 
     
     results = relationship("ResultORM", back_populates="race", cascade="all, delete-orphan")
-
-
-    __table_args__ = (
-        UniqueConstraint("race_date", "track_name", name="uq_race_date_track"),
-    )
     
 class ResultORM(Base):
     __tablename__ = "results"

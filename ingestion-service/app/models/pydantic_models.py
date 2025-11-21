@@ -15,7 +15,7 @@ class Race(BaseModel):
 
 class Result(BaseModel):
     race_id: int #composite PK
-    driver_id: Optional[int] = None
+    driver_id: int
     
     position: Optional[int] #None if DNF
     points: float

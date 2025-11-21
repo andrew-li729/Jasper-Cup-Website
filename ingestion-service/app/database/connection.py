@@ -18,6 +18,8 @@ DATABASE={database};
 UID={username};
 PWD={password};
 TrustServerCertificate=yes;
+LoginTimeout=3;
+Timeout=3;
 """
 
 params = urllib.parse.quote_plus(conn_str)

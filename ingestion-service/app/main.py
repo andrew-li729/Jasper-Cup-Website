@@ -8,9 +8,14 @@ from app.services.driver_service import DriverService
 from app.services.race_service import RaceService
 from app.services.result_service import ResultService
 from app.services.collision_service import CollisionService
-
+from sqlalchemy.orm import Session
+from app.models.sqlalchemy_models import RaceORM
 import os
 from dotenv import load_dotenv
+
+from sqlalchemy.orm import Session
+from sqlalchemy.exc import SQLAlchemyError, OperationalError
+import pyodbc
 
 load_dotenv()
 directory = os.getenv("RACE_OUTPUT_DIRECTORY")
@@ -31,6 +36,23 @@ class ImporterService:
     def __init__(self,engine):
         self.engine = engine
         
+        def test_connection(engine):
+            try:
+                with Session(engine) as session:
+                    # simple query to test that DB is reachable
+                    session.query(RaceORM).limit(1).all()
+
+                print("✅ Database connection OK")
+                return True
+
+            except (OperationalError, SQLAlchemyError, pyodbc.Error) as e:
+                print("❌ Database connection FAILED")
+                print(e)
+                return False
+        
+        if not test_connection(self.engine):
+            raise RuntimeError("Cannot connect to the database — importer aborted")
+            
         self.json_loader = JSONLoader()
         self.driver_parser = DriverParser()
         self.collision_parser = CollisionParser()
@@ -47,16 +69,16 @@ class ImporterService:
         """self.lap_service = LapService(conn)
         
         self.standing_service = StandingService(conn) """
+
+    
+    
     
     def parse_and_insert(self, file_path: str):
         
         data = self.json_loader.load_json(file_path)
-        
         file_created_date = self.json_loader.get_file_date(file_path)
 
         
-        
-        self.current_race_id = self.race_parser.parse(data, file_created_date)
         
         
         

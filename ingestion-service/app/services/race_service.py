@@ -10,7 +10,11 @@ class RaceService:
     def insert(self, race: Race):
         """Insert a single Race Pydantic object into the DB, skip duplicates."""
         db_race_data = race.model_dump()  # Convert Pydantic → dict
-        db_race_data.pop("race_id", None)  # make sure PK isn’t included
+        
+        db_race_data["track_name"] = db_race_data["track_name"].strip().lower()
+        db_race_data["race_date"] = db_race_data["race_date"].replace(tzinfo=None)
+        db_race_data.pop("id", None)   # <-- correct key to remove
+
 
         
         

@@ -14,7 +14,7 @@ class LapParser():
         _type_: _description_
     """
     @staticmethod 
-    def parse(data: dict[str, Any],race_id) -> List[Lap]:
+    def parse(data: dict[str, Any],race_id:int) -> List[Lap]:
         laps = []
         
         for lap in data.get('Laps', []):
