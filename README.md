@@ -71,3 +71,14 @@ RACE_OUTPUT_DIRECTORY =
 python -m app.main
 ```
 ---
+
+## To-Do
+- [ ] Asynchronously run parsers and services
+- [ ] Rewrite insertions so multiple objects utilize a "handshake" for transfer
+- [ ] Add a debug mode
+- [ ] Add detailed architecture diagram
+- [ ] Improve error handling and logging
+- [ ] Add automated tests (unit and integration)
+- [ ] Implement performance benchmarking
+- [ ] Create demo video or GIF for the README
+- [ ] Package and publish the v1.0.0 release
