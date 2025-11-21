@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, UniqueConstraint
+from sqlalchemy import Column, Integer, String, ForeignKey, UniqueConstraint, func
 from sqlalchemy.orm import declarative_base
 from sqlalchemy import Column, Integer, String, BigInteger, Float, DateTime
 from sqlalchemy.orm import declarative_base, Session, relationship
@@ -122,3 +122,10 @@ class LapORM(Base):
             f"s1={self.sector_1_time_ms}, s2={self.sector_2_time_ms}, s3={self.sector_3_time_ms}, "
             f"tire={self.tire})"
         )
+
+Base = declarative_base()
+
+class ProcessedFileORM(Base):
+    __tablename__ = "processed_files"
+
+    file_hash = Column(String(64), primary_key=True)   # PK = hash
