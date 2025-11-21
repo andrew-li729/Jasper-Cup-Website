@@ -19,7 +19,7 @@ class RaceORM(Base):
     planned_duration = Column("planned_duration", Integer, nullable=False, default=0)
     car = Column("car", String, nullable=False)
     total_laps = Column("total_laps", Integer, nullable=False, default=0)
-
+    laps = relationship("LapORM", back_populates="race", cascade="all, delete-orphan")
     
     results = relationship("ResultORM", back_populates="race", cascade="all, delete-orphan")
     
@@ -42,7 +42,8 @@ class ResultORM(Base):
     # Relationships
     race = relationship("RaceORM", back_populates="results")
     driver = relationship("DriverORM", back_populates="results")
-
+    
+    
     def __repr__(self):
         return (
             f"Result(race_id={self.race_id}, driver_id={self.driver_id}, "
@@ -60,7 +61,7 @@ class DriverORM(Base):
 
     
     results = relationship("ResultORM", back_populates="driver", cascade="all, delete-orphan")
-
+    laps = relationship("LapORM", back_populates="driver", cascade="all, delete-orphan")
     
     __table_args__ = (
         UniqueConstraint('id', name='uq_driver_id'),
@@ -91,4 +92,33 @@ class CollisionORM(Base):
         return (
             f"Collision(id={self.id}, race_id={self.race_id}, driver_id={self.driver_id}, "
             f"type={self.type!r}, other_driver_id={self.other_driver_id}, impact_speed={self.impact_speed})"
+        )
+
+class LapORM(Base):
+    __tablename__ = "laps"
+
+    # Composite Primary Key: race_id + driver_id + time_stamp
+    race_id = Column(Integer, ForeignKey("races.id"), primary_key=True)
+    driver_id = Column(Integer, ForeignKey("drivers.id"), primary_key=True)
+    time_stamp = Column(Integer, primary_key=True)  # ms since race start
+
+    # Lap timing fields
+    lap_time = Column(Integer, nullable=False)
+    sector_1_time_ms = Column(Integer, nullable=False)
+    sector_2_time_ms = Column(Integer, nullable=False)
+    sector_3_time_ms = Column(Integer, nullable=False)
+
+    # Tire compound
+    tire = Column(String(16), nullable=False)   # "soft", "medium", "hard"
+
+    # Relationships (optional)
+    race = relationship("RaceORM", back_populates="laps")
+    driver = relationship("DriverORM", back_populates="laps")
+
+    def __repr__(self):
+        return (
+            f"Lap(race_id={self.race_id}, driver_id={self.driver_id}, "
+            f"time_stamp={self.time_stamp}, lap_time={self.lap_time}, "
+            f"s1={self.sector_1_time_ms}, s2={self.sector_2_time_ms}, s3={self.sector_3_time_ms}, "
+            f"tire={self.tire})"
         )

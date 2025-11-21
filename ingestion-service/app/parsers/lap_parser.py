@@ -29,9 +29,9 @@ class LapParser():
                 time_stamp = lap['Timestamp'],
                 
                 lap_time = lap['LapTime'],
-                sector_1_time = lap['Sectors'][0],
-                sector_2_time = lap['Sectors'][1],
-                sector_3_time = lap['Sectors'][2],
+                sector_1_time_ms = lap['Sectors'][0],
+                sector_2_time_ms = lap['Sectors'][1],
+                sector_3_time_ms = lap['Sectors'][2],
                 tire = tireMap[lap['Tyre']]
             )
             

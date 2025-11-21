@@ -8,6 +8,7 @@ from app.services.driver_service import DriverService
 from app.services.race_service import RaceService
 from app.services.result_service import ResultService
 from app.services.collision_service import CollisionService
+from app.services.lap_service import LapService
 from sqlalchemy.orm import Session
 from app.models.sqlalchemy_models import RaceORM
 import os
@@ -26,7 +27,7 @@ from app.parsers.lap_parser import LapParser
 
 """from app.services.race_service import RaceService
 
-from app.services.lap_service import LapService
+
 
 from app.services.standing_service import StandingService """
 
@@ -66,7 +67,8 @@ class ImporterService:
         self.race_service = RaceService(self.engine)
         self.result_service = ResultService(engine)
         self.collision_service = CollisionService(engine)
-        """self.lap_service = LapService(conn)
+        self.lap_service = LapService(engine)
+        """
         
         self.standing_service = StandingService(conn) """
 
@@ -77,10 +79,6 @@ class ImporterService:
         
         data = self.json_loader.load_json(file_path)
         file_created_date = self.json_loader.get_file_date(file_path)
-
-        
-        
-        
         
         drivers = self.driver_parser.parse(data)
         for driver in drivers:
@@ -101,7 +99,7 @@ class ImporterService:
         laps = self.lap_parser.parse(data,race_id)
         
         for lap in laps:
-            pprint(lap)
+            self.lap_service.insert(lap)
         return data
         
 
