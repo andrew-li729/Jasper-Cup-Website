@@ -40,6 +40,8 @@ The system includes:
 - **pyodbc**
 - **dotenv**
 
+---
+
 ### 1. Clone the Repo
 ```bash
 git clone https://github.com/andrew-li729/Jasper-Cup-ETL-Microservice.git
@@ -48,6 +50,7 @@ cd data
 
 ### 2. Install Dependencies
 ```bash
+(optional: create virtual environment) python -m venv C:\path\to\new\virtual\environment
 pip install -r requirements.txt
 ```
 
@@ -67,3 +70,4 @@ RACE_OUTPUT_DIRECTORY =
 ```bash
 python -m app.main
 ```
+---
