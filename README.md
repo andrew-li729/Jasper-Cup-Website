@@ -43,4 +43,27 @@ The system includes:
 ### 1. Clone the Repo
 ```bash
 git clone https://github.com/andrew-li729/Jasper-Cup-ETL-Microservice.git
-cd data 
+cd data
+```
+
+### 2. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Environment Variables
+Create a .env file:
+```bash
+DB_DRIVER=ODBC Driver 18 for SQL Server
+DB_SERVER=
+DB_NAME = 
+DB_USER = 
+DB_PASSWORD = 
+CURRENT_SEASON = 
+RACE_OUTPUT_DIRECTORY = 
+```
+
+### 4. Run the Watcher
+```bash
+python -m app.main
+```
