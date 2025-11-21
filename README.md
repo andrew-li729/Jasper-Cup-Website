@@ -20,7 +20,7 @@ The system includes:
 
 1. Watchdog detects a new JSON file  
 2. `ImporterService` computes SHA-256  
-3. `ProcessedFileService` checks SQL Server for duplicates  
+3. `ProcessedFileService` checks SQL Server for file hash  
 4. If new:
    - Load + validate JSON  
    - Parse → ORM models  
@@ -42,6 +42,5 @@ The system includes:
 
 ### 1. Clone the Repo
 ```bash
-git clone https://github.com/andrew-li729/Jasper-Cup-Website.git
-
-cd jasper-cup-website
+git clone https://github.com/andrew-li729/Jasper-Cup-ETL-Microservice.git
+cd data 
