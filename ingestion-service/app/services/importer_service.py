@@ -14,7 +14,6 @@ from sqlalchemy.orm import Session
 from app.models.sqlalchemy_models import RaceORM
 from app.parsers.result_parser import ResultParser
 from app.parsers.lap_parser import LapParser
-from app.watcher.race_watcher import RaceWatcher
 from app.services.processed_file_service import ProcessedFileService
 
 import os
@@ -114,6 +113,3 @@ class ImporterService:
         
 
 importerService = ImporterService(engine)
-
-watcher = RaceWatcher(importerService, directory)
-watcher.start()
