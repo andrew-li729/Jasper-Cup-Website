@@ -8,7 +8,7 @@ The **Jasper Cup ETL Pipeline** is a real-time ingestion system that automatical
 
 The system includes:
 
-- Automated file detection using **Watchdog**
+- File upload using FastAPI
 - **SHA-256 hash–based deduplication** to guarantee exactly-once ingestion
 - A structured **SQLAlchemy 2.0 service-layer architecture**
 - Full parsing + insertion of drivers, laps, collisions, results, and race metadata
@@ -66,9 +66,13 @@ CURRENT_SEASON =
 RACE_OUTPUT_DIRECTORY = 
 ```
 
-### 4. Run the Watcher
+### 4. Run the API
 ```bash
-python -m app.main
+
+venv/scripts/activate
+uvicorn app.api.main:app --reload
+
+
 ```
 ---
 
